@@ -1,0 +1,47 @@
+<script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/6CADB5EC-F6E3-164A-B77C-A82FBF2AE915/main.js" charset="UTF-8"></script><script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+<script>
+
+    new daum.Postcode({
+
+        oncomplete: function(data) {
+
+            console.log(data);
+            console.log(data.zonecode, data.jibunAddress, data.buildingName);
+            var jibunAddress =data.jibunAddress
+            if(!jibunAddress) {
+                jibunAddress =  data.autoJibunAddress;
+            }
+            window.TestApp.setAddress(data.zonecode, jibunAddress, data.buildingName);
+            
+			/*
+            if(data.userSelectedType=="R"){
+				//���ּ��� ���
+
+                // userSelectedType : �˻� ������� ����ڰ� ������ �ּ��� Ÿ��
+
+                // return type : R - roadAddress, J : jibunAddress
+
+                // TestApp �� �ȵ���̵忡�� ����� �̸�
+
+				var convertableAddr = data.jibunAddress;
+
+                window.AddressApp.setAddress(data.zonecode, data.roadAddress, data.buildingName, convertableAddr);
+
+            }
+
+            else{
+				//���� �ּ��ϰ��
+
+				var convertableAddr = data.jibunAddress;
+
+                window.AddressApp.setAddress(data.zonecode, data.jibunAddress, data.buildingName, convertableAddr);
+
+            }
+			*/
+
+        }
+
+    }).open();
+
+</script>
